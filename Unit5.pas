@@ -1,0 +1,112 @@
+unit Unit5;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, Menus, StdCtrls, sButton, acPNG, ExtCtrls, acImage, sLabel,
+  Buttons, sSpeedButton, ComObj;
+
+type
+  TForm5 = class(TForm)
+    lbl1: TsLabelFX;
+    img1: TsImage;
+    btn1: TsButton;
+    mm1: TMainMenu;
+    A1: TMenuItem;
+    N1: TMenuItem;
+    N2: TMenuItem;
+    N3: TMenuItem;
+    N4: TMenuItem;
+    G1: TMenuItem;
+    sSpeedButton1: TsSpeedButton;
+    N5: TMenuItem;
+    N6: TMenuItem;
+    N7: TMenuItem;
+    N8: TMenuItem;
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure btn1Click(Sender: TObject);
+    procedure sSpeedButton1Click(Sender: TObject);
+    procedure N3Click(Sender: TObject);
+    procedure N6Click(Sender: TObject);
+    procedure N5Click(Sender: TObject);
+    procedure N8Click(Sender: TObject);
+    procedure N1Click(Sender: TObject);
+    procedure N4Click(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  Form5: TForm5;
+
+implementation
+ uses Unit2, Unit1, Unit9;
+{$R *.dfm}
+
+procedure TForm5.FormClose(Sender: TObject; var Action: TCloseAction);
+begin
+ Form2.Visible:=True;
+end;
+
+procedure TForm5.btn1Click(Sender: TObject);
+begin
+Form1.Caption:='Электронная цифровая подпись El Gamal';
+ Form1.Show;
+ Form5.Visible:=false;
+end;
+
+procedure TForm5.sSpeedButton1Click(Sender: TObject);
+begin
+Form5.Close; Form2.Visible:=true;
+end;
+
+procedure TForm5.N3Click(Sender: TObject);
+begin
+Form5.Close;
+Form2.Visible:=True;
+end;
+
+procedure LoadInstProg();
+var Word:variant;  name:string;
+begin
+    Word:=CreateOleObject('Word.Application');
+    Word.Visible:=true;
+    name:= ExtractFilePath(Application.ExeName) + 'Документы\Руководство программиста.doc';
+    Word.Documents.Open(name, ReadOnly:=true);
+end;
+
+procedure TForm5.N6Click(Sender: TObject);
+begin
+LoadInstProg();
+end;
+
+procedure TForm5.N5Click(Sender: TObject);
+var Word:variant;  name:string;
+begin
+    Word:=CreateOleObject('Word.Application');
+    Word.Visible:=true;
+    name:= ExtractFilePath(Application.ExeName) + 'Документы\Руководство пользователя.doc';
+    Word.Documents.Open(name, ReadOnly:=true);
+end;
+
+procedure TForm5.N8Click(Sender: TObject);
+begin
+Form9.Show;
+end;
+
+procedure TForm5.N1Click(Sender: TObject);
+begin
+Form1.Caption:='Электронная цифровая подпись El Gamal';
+ Form1.Show;
+ Form5.Visible:=false;
+end;
+
+procedure TForm5.N4Click(Sender: TObject);
+begin
+  Form5.Close; Form2.Close;
+end;
+
+end.
